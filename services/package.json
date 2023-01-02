@@ -5,7 +5,9 @@
   "scripts": {},
   "dependencies": {
     "@prisma/client": "^4.8.0",
-    "aws-sdk": "^2.1286.0"
+    "@trpc/server": "^10.7.0",
+    "aws-sdk": "^2.1286.0",
+    "zod": "^3.20.2"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.109",
