@@ -6,7 +6,7 @@ import { router, publicProcedure } from '../trpc';
 import { Prisma } from '@prisma/client';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
-import { prisma } from '~/server/prisma';
+import { prisma } from './../prisma';
 
 /**
  * Default selector for Post.
@@ -16,9 +16,7 @@ import { prisma } from '~/server/prisma';
 const defaultPostSelect = Prisma.validator<Prisma.PostSelect>()({
   id: true,
   title: true,
-  text: true,
   createdAt: true,
-  updatedAt: true,
 });
 
 export const postRouter = router({
@@ -44,11 +42,6 @@ export const postRouter = router({
         // get an extra item at the end which we'll use as next cursor
         take: limit + 1,
         where: {},
-        cursor: cursor
-          ? {
-              id: cursor,
-            }
-          : undefined,
         orderBy: {
           createdAt: 'desc',
         },
@@ -59,7 +52,6 @@ export const postRouter = router({
 
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const nextItem = items.pop()!;
-        nextCursor = nextItem.id;
       }
 
       return {
@@ -70,7 +62,7 @@ export const postRouter = router({
   byId: publicProcedure
     .input(
       z.object({
-        id: z.string(),
+        id: z.number(),
       }),
     )
     .query(async ({ input }) => {
@@ -87,19 +79,19 @@ export const postRouter = router({
       }
       return post;
     }),
-  add: publicProcedure
-    .input(
-      z.object({
-        id: z.string().uuid().optional(),
-        title: z.string().min(1).max(32),
-        text: z.string().min(1),
-      }),
-    )
-    .mutation(async ({ input }) => {
-      const post = await prisma.post.create({
-        data: input,
-        select: defaultPostSelect,
-      });
-      return post;
-    }),
+  // add: publicProcedure
+  //   .input(
+  //     z.object({
+  //       id: z.string().uuid().optional(),
+  //       title: z.string().min(1).max(32),
+  //       text: z.string().min(1),
+  //     }),
+  //   )
+  //   .mutation(async ({ input }) => {
+  //     const post = await prisma.post.create({
+  //       data: input,
+  //       select: defaultPostSelect,
+  //     });
+  //     return post;
+  //   }),
 });

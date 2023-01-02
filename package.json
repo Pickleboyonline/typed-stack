@@ -23,6 +23,10 @@
     "@serverless-stack/node": "^1.18.4"
   },
   "workspaces": [
-    "services"
+    "services",
+    "expo",
+    "nextjs",
+    "expo-modules/*",
+    "shared/*"
   ]
 }
