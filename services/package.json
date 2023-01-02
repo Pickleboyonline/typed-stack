@@ -4,9 +4,11 @@
   "type": "module",
   "scripts": {},
   "dependencies": {
+    "@prisma/client": "^4.8.0",
     "aws-sdk": "^2.1286.0"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.109"
+    "@types/aws-lambda": "^8.10.109",
+    "prisma": "^4.8.0"
   }
 }
