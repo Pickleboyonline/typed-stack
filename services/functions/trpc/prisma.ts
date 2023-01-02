@@ -3,15 +3,24 @@
  * @link https://www.prisma.io/docs/support/help-articles/nextjs-prisma-client-dev-practices
  */
 import { PrismaClient } from "@prisma/client";
+import { Config } from "@serverless-stack/node/config";
 
 const prismaGlobal = global as typeof global & {
   prisma?: PrismaClient;
 };
 
+
 export const prisma: PrismaClient =
   prismaGlobal.prisma ||
   new PrismaClient({
     log: process.env.IS_LOCAL ? ["query", "error", "warn"] : ["error"],
+    datasources: {
+      db: {
+        // @ts-ignore
+        url: Config.DATABASE_URL
+      }
+    }
+  
   });
 
 if (process.env.IS_LOCAL) {

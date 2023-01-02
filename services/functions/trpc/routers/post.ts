@@ -6,7 +6,7 @@ import { router, publicProcedure } from '../trpc';
 import { Prisma } from '@prisma/client';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
-import { prisma } from './../prisma';
+import { prisma } from '../prisma';
 
 /**
  * Default selector for Post.

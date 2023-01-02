@@ -1,6 +1,8 @@
 import { MyStack } from "./MyStack";
 import { App } from "@serverless-stack/resources";
 import { ServerlessImageHandler } from "./ServerlessImageHandler/ServerlessImageHandler";
+import { TRPC } from "./TRPC";
+import { Prisma } from "./Layers/Prisma";
 
 export default function (app: App) {
   // ! Be sure this does not run on production
@@ -18,4 +20,6 @@ export default function (app: App) {
   });
   app.stack(ServerlessImageHandler)
   app.stack(MyStack);
+  app.stack(Prisma)
+  app.stack(TRPC)
 }
