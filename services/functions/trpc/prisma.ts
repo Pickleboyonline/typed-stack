@@ -9,20 +9,17 @@ const prismaGlobal = global as typeof global & {
   prisma?: PrismaClient;
 };
 
-
 export const prisma: PrismaClient =
   prismaGlobal.prisma ||
   new PrismaClient({
     log: process.env.IS_LOCAL ? ["query", "error", "warn"] : ["error"],
     datasources: {
       db: {
-        // @ts-ignore
-        url: Config.DATABASE_URL
-      }
-    }
-  
+        url: Config.DATABASE_URL,
+      },
+    },
   });
 
-if (process.env.IS_LOCAL) {
+if (!process.env.IS_LOCAL) {
   prismaGlobal.prisma = prisma;
 }
