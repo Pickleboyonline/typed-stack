@@ -1,5 +1,6 @@
 import { StackContext, Api, use, Config } from "@serverless-stack/resources";
 import { Prisma } from "./Layers/Prisma";
+import { Secrets } from "./Secrets";
 
 /**
  * tRPC API Gateway: https://trpc.io/docs/serverless
@@ -8,8 +9,7 @@ import { Prisma } from "./Layers/Prisma";
  */
 export function TRPC({ stack }: StackContext) {
   const { prismaLayer } = use(Prisma);
-
-  const DATABASE_URL = new Config.Secret(stack, "DATABASE_URL");
+  const { DATABASE_URL } = use(Secrets);
 
   const trcpHandlerRoute = "functions/trpc/index.handler";
   const api = new Api(stack, "tRPC-Api", {
