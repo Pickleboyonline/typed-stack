@@ -23,22 +23,9 @@ export function Auth({ stack }: StackContext) {
     cdk: {
       userPool: {
         selfSignUpEnabled: true,
-
-        // standardAttributes: {
-        //   email: {required: true, },
-        // },
-        // selfSignUpEnabled: true,
-        // passwordPolicy: {
-        //   minLength: 6,
-        //   requireLowercase: false,
-        //   requireDigits: false,
-        //   requireSymbols: false,
-        //   requireUppercase: false,
-        // },
       },
     },
     triggers: {
-      // postConfirmation: 'functions/cognito-triggers/postConfirmation.handler',
       preAuthentication: "functions/cognito-triggers/preAuthentication.handler",
     },
     defaults: {

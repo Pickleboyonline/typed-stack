@@ -1,14 +1,18 @@
-import { QueryClient } from '@tanstack/react-query';
-import { httpBatchLink } from '@trpc/client';
-import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { QueryClient } from "@tanstack/react-query";
+import { httpBatchLink } from "@trpc/client";
+import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
-import { trpc } from './util/trpc';
-import superjson from 'superjson';
+import useCachedResources from "./hooks/useCachedResources";
+import useColorScheme from "./hooks/useColorScheme";
+import { Navigation } from "@navigation";
+import { trpc } from "./util/trpc";
+import superjson from "superjson";
+
+import { TailwindProvider } from "tailwind-rn";
+import Environment from "./constants/Environment";
+import utilities from "./tailwind.json";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -19,17 +23,15 @@ export default function App() {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: 'http://localhost:5000/trpc',
+          url: Environment.trpcEndpoint,
           // optional
           headers() {
-            return {
-              
-            };
+            return {};
           },
         }),
       ],
-      transformer: superjson
-    }),
+      transformer: superjson,
+    })
   );
 
   if (!isLoadingComplete) {
@@ -37,7 +39,7 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        <Navigation />
         <StatusBar />
       </SafeAreaProvider>
     );

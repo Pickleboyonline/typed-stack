@@ -1,6 +1,12 @@
 {
-  "name": "core",
+  "name": "@typed-stack/core",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "true-myth": "*"
+  },
+  "devDependencies": {
+    "true-myth": "6.2.0"
+  }
 }
