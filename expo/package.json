@@ -20,6 +20,7 @@
   "dependencies": {
     "@aws-sdk/client-cognito-identity-provider": "^3.245.0",
     "@expo/vector-icons": "13.0.0",
+    "@react-native-picker/picker": "2.4.8",
     "@react-navigation/bottom-tabs": "6.0.5",
     "@react-navigation/native": "6.0.2",
     "@react-navigation/native-stack": "6.1.0",
@@ -27,6 +28,9 @@
     "@trpc/client": "10.8.1",
     "@trpc/react-query": "10.8.1",
     "@trpc/server": "10.8.1",
+    "@typed-stack/core": "*",
+    "aws-amplify": "^5.0.8",
+    "aws-amplify-react-native": "^7.0.2",
     "expo": "47.0.9",
     "expo-asset": "8.7.0",
     "expo-constants": "14.0.2",
@@ -47,8 +51,9 @@
     "react-native-web": "0.18.9",
     "superjson": "^1.12.1",
     "tailwind-rn": "^4.2.0",
+    "true-myth": "^6.2.0",
     "uuid": "^3.0.0",
-    "@typed-stack/core": "*"
+    "zustand": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.12.9",
