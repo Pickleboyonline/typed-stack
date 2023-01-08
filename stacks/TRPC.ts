@@ -11,7 +11,7 @@ export function TRPC({ stack }: StackContext) {
 
   const DATABASE_URL = new Config.Secret(stack, "DATABASE_URL");
 
-  const trcpHandlerRoute = "trpc/index.handler";
+  const trcpHandlerRoute = "functions/trpc/index.handler";
   const api = new Api(stack, "tRPC-Api", {
     routes: {
       "GET /{proxy+}": trcpHandlerRoute,

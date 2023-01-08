@@ -29,6 +29,8 @@
     "nextjs",
     "expo-modules/*",
     "shared/*",
-    "expo-modules/**/example"
+    "expo-modules/**/example",
+    "developer-guide",
+    "core"
   ]
 }
