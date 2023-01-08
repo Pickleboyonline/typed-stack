@@ -1,0 +1,19 @@
+{
+  "name": "flutter",
+  "version": "1.0.0",
+  "description": "A new Flutter project.",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc",
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "flutter pub run build_runner watch",
+    "sync": "flutter pub get"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

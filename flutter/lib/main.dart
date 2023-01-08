@@ -11,6 +11,8 @@ import 'amplifyconfiguration.dart';
 
 import 'package:graphql_flutter/graphql_flutter.dart';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 part 'main.g.dart';
 
 // To build widgets:
@@ -26,11 +28,23 @@ void main() async {
   // so we need to initialize Hive.
   await initHiveForFlutter();
 
-  final HttpLink httpLink = HttpLink(
-  );
+  await dotenv.load(fileName: ".env");
+
+  try {
+    final auth = AmplifyAuthCognito();
+    await Amplify.addPlugin(auth);
+
+    // call Amplify.configure to use the initialized categories in your app
+    await Amplify.configure(getAmplifyConfiguration());
+    print('Amplify configured!');
+  } on Exception catch (e) {
+    safePrint('An error occurred configuring Amplify: $e');
+  }
+
+  final HttpLink httpLink = HttpLink(dotenv.env['DEV_API_URL']!);
 
   final AuthLink authLink = AuthLink(
-     getToken: () async => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
+    getToken: () async => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
     // OR
     // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
   );
@@ -45,7 +59,7 @@ void main() async {
     ),
   );
 
-  runApp( MyApp(client));
+  runApp(MyApp(client));
 }
 
 @hwidget
@@ -54,18 +68,7 @@ Widget userCard(BuildContext context, int index) {
 
   //final result = useQuery$FetchPerson(Options$Query$FetchPerson(variables: Variables$Query$FetchPerson(id: "Hey")));
 
-  final configureAmplify = useCallback(() async {
-    try {
-      final auth = AmplifyAuthCognito();
-      await Amplify.addPlugin(auth);
-
-      // call Amplify.configure to use the initialized categories in your app
-      await Amplify.configure(amplifyconfig);
-      print('Amplify configured!');
-    } on Exception catch (e) {
-      safePrint('An error occurred configuring Amplify: $e');
-    }
-  }, []);
+  final configureAmplify = useCallback(() async {}, []);
 
   void onPress() {
     count.value++;
@@ -93,7 +96,7 @@ Widget myApp(BuildContext context, ValueNotifier<GraphQLClient> graphQLClient) {
     title: 'Hello World!',
     home: Scaffold(
       appBar: AppBar(
-        title: const Text('Wecsacome!'),
+        title: const Text('Welcome to Typed-stack!'),
       ),
       body: const Center(child: GreetingCard()),
     ),

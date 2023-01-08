@@ -42,6 +42,7 @@ dependencies:
   amplify_auth_cognito: ^0.6.0
   graphql: ^5.1.2
   graphql_flutter: ^5.1.1
+  flutter_dotenv: ^5.0.2
   
 
 dev_dependencies:
@@ -72,6 +73,8 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
