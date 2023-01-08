@@ -5,12 +5,13 @@ import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:typed_stack/person.graphql.dart';
+import 'package:typed_stack/src/greeting/greeting.dart';
+// import 'package:typed_stack/person.graphql.dart';
 import 'amplifyconfiguration.dart';
 
+import 'package:graphql_flutter/graphql_flutter.dart';
+
 part 'main.g.dart';
-
-
 
 // To build widgets:
 // flutter pub run build_runner watch
@@ -18,16 +19,40 @@ part 'main.g.dart';
 // To get React-Native like experience:
 // https://github.com/rrousselGit/functional_widget
 // https://pub.dev/packages/flutter_hooks
+//
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  // We're using HiveStore for persistence,
+  // so we need to initialize Hive.
+  await initHiveForFlutter();
+
+  final HttpLink httpLink = HttpLink(
+  );
+
+  final AuthLink authLink = AuthLink(
+     getToken: () async => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
+    // OR
+    // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
+  );
+
+  final Link link = httpLink;
+
+  ValueNotifier<GraphQLClient> client = ValueNotifier(
+    GraphQLClient(
+      link: link,
+      // The default store is the InMemoryStore, which does NOT persist to disk
+      cache: GraphQLCache(store: HiveStore()),
+    ),
+  );
+
+  runApp( MyApp(client));
 }
 
 @hwidget
 Widget userCard(BuildContext context, int index) {
   final count = useState(4);
 
-  final result = useQuery$FetchPerson(Options$Query$FetchPerson(variables: Variables$Query$FetchPerson(id: "Hey")));
+  //final result = useQuery$FetchPerson(Options$Query$FetchPerson(variables: Variables$Query$FetchPerson(id: "Hey")));
 
   final configureAmplify = useCallback(() async {
     try {
@@ -62,23 +87,20 @@ Widget userCard(BuildContext context, int index) {
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Hello World!',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Wecsacome!'),
-        ),
-        body: Center(
-            child: Column(
-          children: const <Widget>[Text('Hello '), UserCard(3)],
-        )),
+@swidget
+Widget myApp(BuildContext context, ValueNotifier<GraphQLClient> graphQLClient) {
+  var child = MaterialApp(
+    title: 'Hello World!',
+    home: Scaffold(
+      appBar: AppBar(
+        title: const Text('Wecsacome!'),
       ),
-    );
-  }
+      body: const Center(child: GreetingCard()),
+    ),
+  );
+
+  return GraphQLProvider(
+    client: graphQLClient,
+    child: child,
+  );
 }
