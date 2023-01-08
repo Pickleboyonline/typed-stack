@@ -7,6 +7,14 @@ export var isArticle = function(obj) {
 
 
 
+var Greeting_possibleTypes = ['Greeting']
+export var isGreeting = function(obj) {
+  if (!obj || !obj.__typename) throw new Error('__typename is missing in "isGreeting"')
+  return Greeting_possibleTypes.includes(obj.__typename)
+}
+
+
+
 var Mutation_possibleTypes = ['Mutation']
 export var isMutation = function(obj) {
   if (!obj || !obj.__typename) throw new Error('__typename is missing in "isMutation"')

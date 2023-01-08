@@ -1,8 +1,8 @@
 export default {
     "scalars": [
         1,
-        3,
-        5
+        4,
+        6
     ],
     "types": {
         "Article": {
@@ -10,26 +10,34 @@ export default {
                 1
             ],
             "__typename": [
-                3
+                4
             ]
         },
         "ID": {},
+        "Greeting": {
+            "message": [
+                1
+            ],
+            "__typename": [
+                4
+            ]
+        },
         "Mutation": {
             "createArticle": [
                 0,
                 {
                     "title": [
-                        3,
+                        4,
                         "String!"
                     ],
                     "url": [
-                        3,
+                        4,
                         "String!"
                     ]
                 }
             ],
             "__typename": [
-                3
+                4
             ]
         },
         "String": {},
@@ -38,7 +46,7 @@ export default {
                 0,
                 {
                     "articleID": [
-                        3,
+                        4,
                         "String!"
                     ]
                 }
@@ -46,8 +54,17 @@ export default {
             "articles": [
                 0
             ],
+            "greetMe": [
+                2,
+                {
+                    "name": [
+                        4,
+                        "String!"
+                    ]
+                }
+            ],
             "__typename": [
-                3
+                4
             ]
         },
         "Boolean": {}

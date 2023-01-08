@@ -1,17 +1,17 @@
+type Article {
+  id: ID!
+}
+
+type Greeting {
+  message: ID!
+}
+
+type Mutation {
+  createArticle(title: String!, url: String!): Article!
+}
+
 type Query {
-  fetch_person(id: ID!): Person
+  article(articleID: String!): Article!
+  articles: [Article!]!
+  greetMe(name: String!): Greeting!
 }
-
-type Person {
-  full_name: String!
-  nickname: String
-  website: URL
-  date_of_birth: ISODateTime
-  parents: [Person!]
-  siblings: [Person!]
-  children: [Person!]
-}
-
-scalar ISODateTime
-
-scalar URL
