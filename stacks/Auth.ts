@@ -42,6 +42,7 @@ export function Auth({ stack }: StackContext) {
   stack.addOutputs({
     AuthUserPoolId: auth.userPoolId,
     AuthUserPoolClientId: auth.userPoolClientId,
+    identityPoolID: auth.cognitoIdentityPoolId ?? "",
   });
 
   return {
