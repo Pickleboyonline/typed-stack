@@ -25,11 +25,9 @@ if (result.isErr) {
  * ``` 
  * @param executor
  * @returns
+ * @deprecated
  */
-export const attempt = async <
-  Err,
-  T extends ReturnsPromiseFunction = ReturnsPromiseFunction
->(
+export const attempt = async <Err, T extends ReturnsPromiseFunction>(
   executor: T
 ): Promise<Result<A<T>, Err>> => {
   try {
@@ -37,6 +35,35 @@ export const attempt = async <
     return Result.ok(result);
   } catch (error) {
     return Result.err(error as Err);
+  }
+};
+
+/**
+ * Provide Rust-like error handling in TS. Docs on Result types:
+ * https://true-myth.js.org/
+ * 
+ * @example
+ * ```ts
+const result = await wrap(() => Promise.resolve(5));
+
+if (result.isErr) {
+  // Do something with the error
+} else {
+  // Do something with the result
+  console.log(result.value);
+}
+ * ``` 
+ * @param executor
+ * @returns
+ */
+export const wrap = async <T extends ReturnsPromiseFunction>(
+  executor: T
+): Promise<Result<A<T>, unknown>> => {
+  try {
+    const result = await executor();
+    return Result.ok(result);
+  } catch (error) {
+    return Result.err(error as unknown);
   }
 };
 
@@ -57,6 +84,7 @@ if (result.isErr) {
  * ``` 
  * @param executor
  * @returns
+ * @deprecated
  */
 export const attemptSync = <
   Err,
