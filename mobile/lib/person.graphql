@@ -1,0 +1,5 @@
+query FetchPerson($id: ID!) {
+  fetch_person(id: $id) {
+    name: full_name
+  }
+}

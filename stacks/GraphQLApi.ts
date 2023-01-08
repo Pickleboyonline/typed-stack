@@ -14,6 +14,7 @@ export function GraphQLApi({ stack }: StackContext) {
           output: "graphql/schema.graphql",
           commands: [
             "npx genql --output ./graphql/genql --schema ./graphql/schema.graphql --esm",
+            "cp graphql/schema.graphql mobile/lib/schema.graphql",
           ],
         },
       },
