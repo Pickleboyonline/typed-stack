@@ -25,7 +25,6 @@
   },
   "workspaces": [
     "services",
-    "expo",
     "nextjs",
     "expo-modules/*",
     "shared/*",
