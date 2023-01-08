@@ -5,9 +5,12 @@ import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:typed_stack/person.graphql.dart';
 import 'amplifyconfiguration.dart';
 
 part 'main.g.dart';
+
+
 
 // To build widgets:
 // flutter pub run build_runner watch
@@ -23,6 +26,8 @@ void main() {
 @hwidget
 Widget userCard(BuildContext context, int index) {
   final count = useState(4);
+
+  final result = useQuery$FetchPerson(Options$Query$FetchPerson(variables: Variables$Query$FetchPerson(id: "Hey")));
 
   final configureAmplify = useCallback(() async {
     try {
