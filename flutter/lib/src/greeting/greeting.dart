@@ -6,19 +6,34 @@ part 'greeting.g.dart';
 
 @hwidget
 Widget greetingCard(BuildContext context) {
-  final greetingApi = useQuery$GreetMe(Options$Query$GreetMe(variables: Variables$Query$GreetMe(name: "Imran")));
+  final controller = useTextEditingController();
+
+  final greetingApi = useQuery$GreetMe(Options$Query$GreetMe(
+      variables: Variables$Query$GreetMe(name: controller.text)));
 
   final makeApiRequest = useCallback(() {
     greetingApi.refetch();
   }, [greetingApi]);
 
-
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text("isLoading?: ${greetingApi.result.isLoading}"),
-      if (greetingApi.result.parsedData?.greetMe != null) Text("Greeting: ${greetingApi.result.parsedData?.greetMe.message}"),
-      TextButton(onPressed: makeApiRequest, child: const Text("Make API request!"))
+      Padding(
+          padding: const EdgeInsets.all(10),
+          child: TextField(
+            controller: controller,
+            decoration: const InputDecoration(
+                border: InputBorder.none, hintText: 'Please enter your name'),
+          )),
+      const Padding(padding: EdgeInsets.only(top: 10)),
+      if (greetingApi.result.parsedData?.greetMe != null)
+        Text("Greeting: ${greetingApi.result.parsedData?.greetMe.message}"),
+      TextButton(
+          onPressed: makeApiRequest,
+          child: greetingApi.result.isLoading
+              ? const CircularProgressIndicator(value: null,)
+              : const Text("Make API request!"))
     ],
   );
 }
