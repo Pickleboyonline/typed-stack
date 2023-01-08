@@ -4,6 +4,7 @@ import { TRPC } from "./TRPC";
 import { Prisma } from "./Layers/Prisma";
 import { Auth } from "./Auth";
 import { Secrets } from "./Secrets";
+import { GraphQLApi } from "./GraphQLApi";
 
 export default function (app: App) {
   // ! Be sure this does not run on production
@@ -19,9 +20,10 @@ export default function (app: App) {
       format: "esm",
     },
   });
-  app.stack(Secrets)
-  app.stack(ServerlessImageHandler)
-  app.stack(Prisma)
-  app.stack(Auth)
-  app.stack(TRPC)
+  app.stack(Secrets);
+  app.stack(ServerlessImageHandler);
+  app.stack(Prisma);
+  app.stack(Auth);
+  app.stack(TRPC);
+  app.stack(GraphQLApi);
 }

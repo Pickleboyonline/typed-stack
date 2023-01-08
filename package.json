@@ -30,6 +30,7 @@
     "shared/*",
     "expo-modules/**/example",
     "developer-guide",
-    "core"
+    "core",
+    "graphql"
   ]
 }
