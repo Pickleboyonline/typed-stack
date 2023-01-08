@@ -5,7 +5,7 @@ import 'package:functional_widget_annotation/functional_widget_annotation.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
-import 'package:typed_stack/src/greeting/greeting.dart';
+import 'package:typed_stack/src/widgets/greeting/greeting.dart';
 // import 'package:typed_stack/person.graphql.dart';
 import 'amplifyconfiguration.dart';
 

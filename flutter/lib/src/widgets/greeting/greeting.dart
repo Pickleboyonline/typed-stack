@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:functional_widget_annotation/functional_widget_annotation.dart';
-import 'package:typed_stack/src/greeting/greeting.graphql.dart';
+import 'package:typed_stack/src/widgets/greeting/greeting.graphql.dart';
 part 'greeting.g.dart';
 
 @hwidget
