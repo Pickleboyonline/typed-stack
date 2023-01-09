@@ -1,22 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'main.dart';
+part of 'greeting.dart';
 
 // **************************************************************************
 // FunctionalWidgetGenerator
 // **************************************************************************
 
-class UserCard extends HookWidget {
-  const UserCard(
-    this.index, {
-    Key? key,
-  }) : super(key: key);
-
-  final int index;
+class GreetingCard extends HookWidget {
+  const GreetingCard({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext _context) => userCard(
-        _context,
-        index,
-      );
+  Widget build(BuildContext _context) => greetingCard(_context);
 }

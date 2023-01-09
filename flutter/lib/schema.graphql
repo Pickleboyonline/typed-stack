@@ -1,0 +1,17 @@
+type Article {
+  id: ID!
+}
+
+type Greeting {
+  message: ID!
+}
+
+type Mutation {
+  createArticle(title: String!, url: String!): Article!
+}
+
+type Query {
+  article(articleID: String!): Article!
+  articles: [Article!]!
+  greetMe(name: String!): Greeting!
+}
