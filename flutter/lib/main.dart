@@ -66,8 +66,6 @@ void main() async {
 Widget userCard(BuildContext context, int index) {
   final count = useState(4);
 
-  //final result = useQuery$FetchPerson(Options$Query$FetchPerson(variables: Variables$Query$FetchPerson(id: "Hey")));
-
   final configureAmplify = useCallback(() async {}, []);
 
   void onPress() {
