@@ -62,32 +62,6 @@ void main() async {
   runApp(MyApp(client));
 }
 
-@hwidget
-Widget userCard(BuildContext context, int index) {
-  final count = useState(4);
-
-  final configureAmplify = useCallback(() async {}, []);
-
-  void onPress() {
-    count.value++;
-  }
-
-  useEffect(() {
-    print('Starting to configure amplify...');
-    configureAmplify();
-    return;
-  }, []);
-
-  void isUserSignedIn() {}
-
-  return Card(
-    child: Column(children: <Widget>[
-      Text('Card $index, count value: ${count.value}'),
-      TextButton(onPressed: onPress, child: const Text('Press me'))
-    ]),
-  );
-}
-
 @swidget
 Widget myApp(BuildContext context, ValueNotifier<GraphQLClient> graphQLClient) {
   var child = MaterialApp(

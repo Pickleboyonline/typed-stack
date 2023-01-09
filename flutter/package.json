@@ -11,6 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "flutter pub run build_runner watch",
+    "build": "flutter pub run build_runner build --delete-conflicting-outputs",
     "sync": "flutter pub get"
   },
   "keywords": [],

@@ -6,7 +6,7 @@ import { Auth } from "./Auth";
 import { Secrets } from "./Secrets";
 import { GraphQLApi } from "./GraphQLApi";
 
-export default function (app: App) {
+export default function(app: App) {
   // ! Be sure this does not run on production
   if (app.local || app.stageName === "staging") {
     app.setDefaultRemovalPolicy("destroy");
@@ -24,6 +24,7 @@ export default function (app: App) {
   app.stack(ServerlessImageHandler);
   app.stack(Prisma);
   app.stack(Auth);
-  app.stack(TRPC);
+  // Uncomment to use tRPC lambdas
+  // app.stack(TRPC);
   app.stack(GraphQLApi);
 }

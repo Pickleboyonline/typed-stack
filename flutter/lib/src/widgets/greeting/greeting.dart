@@ -32,7 +32,9 @@ Widget greetingCard(BuildContext context) {
       TextButton(
           onPressed: makeApiRequest,
           child: greetingApi.result.isLoading
-              ? const CircularProgressIndicator(value: null,)
+              ? const CircularProgressIndicator(
+                  value: null,
+                )
               : const Text("Make API request!"))
     ],
   );
