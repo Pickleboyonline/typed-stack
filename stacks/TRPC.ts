@@ -4,8 +4,8 @@ import { Secrets } from "./Secrets";
 
 /**
  * tRPC API Gateway: https://trpc.io/docs/serverless
- * 
- * @param param0 
+ *
+ * @param param0
  */
 export function TRPC({ stack }: StackContext) {
   const { prismaLayer } = use(Prisma);
@@ -21,8 +21,17 @@ export function TRPC({ stack }: StackContext) {
       function: {
         bundle: {
           externalModules: prismaLayer ? ["@prisma/client", ".prisma"] : [],
+          commandHooks: {
+            beforeBundling: () => [],
+            beforeInstall: () => [],
+            afterBundling: (inputDir, outputDir) => [
+              "pwd",
+              // "cd " + inputDir,
+              "node ",
+            ],
+          },
         },
-        bind: [DATABASE_URL]
+        bind: [DATABASE_URL],
       },
     },
   });

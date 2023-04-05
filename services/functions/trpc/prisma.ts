@@ -3,11 +3,12 @@
  * @link https://www.prisma.io/docs/support/help-articles/nextjs-prisma-client-dev-practices
  */
 import { PrismaClient } from "@prisma/client";
-import { Config } from "@serverless-stack/node/config";
 
 const prismaGlobal = global as typeof global & {
   prisma?: PrismaClient;
 };
+
+await Promise.resolve(23);
 
 export const prisma: PrismaClient =
   prismaGlobal.prisma ||
@@ -15,7 +16,18 @@ export const prisma: PrismaClient =
     log: process.env.IS_LOCAL ? ["query", "error", "warn"] : ["error"],
     datasources: {
       db: {
-        url: Config.DATABASE_URL,
+        ...await(
+          async (): Promise<{} | { url: string }> => {
+            try {
+              const { Config } = await import("@serverless-stack/node/config");
+              const obj = { url: Config.DATABASE_URL };
+              return {};
+            } catch (e) {
+              console.log("Could not grab database URL: ", e);
+              return {};
+            }
+          }
+        )(),
       },
     },
   });
