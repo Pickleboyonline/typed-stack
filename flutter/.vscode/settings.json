@@ -1,6 +1,0 @@
-{
-    "files.exclude": {
-        "**/*.g.dart": true,
-        "**/*.graphql.dart": true
-    }
-}

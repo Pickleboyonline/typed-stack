@@ -29,7 +29,7 @@
     "expo-modules/*",
     "shared/*",
     "expo-modules/**/example",
-    "developer-guide",
+    "docs",
     "core",
     "graphql"
   ]
