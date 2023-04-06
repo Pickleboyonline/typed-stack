@@ -1,0 +1,1 @@
+openapi-generator-cli generate -g kotlin -i ./../open-api-schema/docs.json -o ./../kotlin-packages/kotlin-client
