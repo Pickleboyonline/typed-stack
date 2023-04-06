@@ -8,8 +8,6 @@ const prismaGlobal = global as typeof global & {
   prisma?: PrismaClient;
 };
 
-await Promise.resolve(23);
-
 export const prisma: PrismaClient =
   prismaGlobal.prisma ||
   new PrismaClient({
