@@ -11,14 +11,9 @@ import AnyCodable
 #endif
 
 /** Describes the result of uploading an image resource */
-@objc public class ApiResponse: NSObject, Codable, JSONEncodable {
+public struct ApiResponse: Codable, JSONEncodable, Hashable {
 
     public var code: Int?
-    public var codeNum: NSNumber? {
-        get {
-            return code as NSNumber?
-        }
-    }
     public var type: String?
     public var message: String?
 

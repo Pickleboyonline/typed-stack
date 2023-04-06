@@ -28,7 +28,7 @@ This can only be done by the logged in user.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let user = User(_id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // User | Created user object
+let user = User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // User | Created user object
 
 // Create user
 UserAPI.createUser(user: user) { (response, error) in
@@ -78,7 +78,7 @@ Creates list of users with given input array
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let user = [User(_id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123)] // [User] | List of user object
+let user = [User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123)] // [User] | List of user object
 
 // Creates list of users with given input array
 UserAPI.createUsersWithArrayInput(user: user) { (response, error) in
@@ -128,7 +128,7 @@ Creates list of users with given input array
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let user = [User(_id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123)] // [User] | List of user object
+let user = [User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123)] // [User] | List of user object
 
 // Creates list of users with given input array
 UserAPI.createUsersWithListInput(user: user) { (response, error) in
@@ -377,7 +377,7 @@ This can only be done by the logged in user.
 import OpenAPIClient
 
 let username = "username_example" // String | name that need to be deleted
-let user = User(_id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // User | Updated user object
+let user = User(id: 123, username: "username_example", firstName: "firstName_example", lastName: "lastName_example", email: "email_example", password: "password_example", phone: "phone_example", userStatus: 123) // User | Updated user object
 
 // Updated user
 UserAPI.updateUser(username: username, user: user) { (response, error) in

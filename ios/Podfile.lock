@@ -1,0 +1,23 @@
+PODS:
+  - AnyCodable-FlightSchool (0.6.7)
+  - OpenAPIClient (1.0.0):
+    - AnyCodable-FlightSchool (~> 0.6)
+
+DEPENDENCIES:
+  - OpenAPIClient (from `./../packages/swift-client`)
+
+SPEC REPOS:
+  trunk:
+    - AnyCodable-FlightSchool
+
+EXTERNAL SOURCES:
+  OpenAPIClient:
+    :path: "./../packages/swift-client"
+
+SPEC CHECKSUMS:
+  AnyCodable-FlightSchool: 261cbe76757802b17d471b9059b21e6fa5edf57b
+  OpenAPIClient: 56cc96122a5ce91444a17f8a797d57a8ed438d5a
+
+PODFILE CHECKSUM: fc3111c27f4120f4cd89d000e88d31e2d28cf503
+
+COCOAPODS: 1.11.3

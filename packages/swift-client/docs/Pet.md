@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | **Int64** |  | [optional] 
+**id** | **Int64** |  | [optional] 
 **category** | [**Category**](Category.md) |  | [optional] 
 **name** | **String** |  | 
 **photoUrls** | **[String]** |  | 

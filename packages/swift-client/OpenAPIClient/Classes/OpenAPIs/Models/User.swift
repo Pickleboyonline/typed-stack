@@ -11,14 +11,9 @@ import AnyCodable
 #endif
 
 /** A User who is purchasing from the pet store */
-@objc public class User: NSObject, Codable, JSONEncodable {
+public struct User: Codable, JSONEncodable, Hashable {
 
-    public var _id: Int64?
-    public var _idNum: NSNumber? {
-        get {
-            return _id as NSNumber?
-        }
-    }
+    public var id: Int64?
     public var username: String?
     public var firstName: String?
     public var lastName: String?
@@ -27,14 +22,9 @@ import AnyCodable
     public var phone: String?
     /** User Status */
     public var userStatus: Int?
-    public var userStatusNum: NSNumber? {
-        get {
-            return userStatus as NSNumber?
-        }
-    }
 
-    public init(_id: Int64? = nil, username: String? = nil, firstName: String? = nil, lastName: String? = nil, email: String? = nil, password: String? = nil, phone: String? = nil, userStatus: Int? = nil) {
-        self._id = _id
+    public init(id: Int64? = nil, username: String? = nil, firstName: String? = nil, lastName: String? = nil, email: String? = nil, password: String? = nil, phone: String? = nil, userStatus: Int? = nil) {
+        self.id = id
         self.username = username
         self.firstName = firstName
         self.lastName = lastName
@@ -45,7 +35,7 @@ import AnyCodable
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id = "id"
+        case id
         case username
         case firstName
         case lastName
@@ -59,7 +49,7 @@ import AnyCodable
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(_id, forKey: ._id)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(username, forKey: .username)
         try container.encodeIfPresent(firstName, forKey: .firstName)
         try container.encodeIfPresent(lastName, forKey: .lastName)

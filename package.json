@@ -9,7 +9,8 @@
     "remove": "sst remove",
     "console": "sst console",
     "typecheck": "tsc --noEmit",
-    "test": "sst bind -- vitest run"
+    "test": "sst bind -- vitest run",
+    "build-client": "cd scripts && bash generate-trpc-open-api-schema.sh"
   },
   "devDependencies": {
     "@serverless-stack/cli": "1.18.4",

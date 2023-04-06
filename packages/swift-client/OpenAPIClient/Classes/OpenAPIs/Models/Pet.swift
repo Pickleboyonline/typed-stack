@@ -11,19 +11,14 @@ import AnyCodable
 #endif
 
 /** A pet for sale in the pet store */
-@objc public class Pet: NSObject, Codable, JSONEncodable {
+public struct Pet: Codable, JSONEncodable, Hashable {
 
     public enum Status: String, Codable, CaseIterable {
         case available = "available"
         case pending = "pending"
         case sold = "sold"
     }
-    public var _id: Int64?
-    public var _idNum: NSNumber? {
-        get {
-            return _id as NSNumber?
-        }
-    }
+    public var id: Int64?
     public var category: Category?
     public var name: String
     public var photoUrls: [String]
@@ -32,8 +27,8 @@ import AnyCodable
     @available(*, deprecated, message: "This property is deprecated.")
     public var status: Status?
 
-    public init(_id: Int64? = nil, category: Category? = nil, name: String, photoUrls: [String], tags: [Tag]? = nil, status: Status? = nil) {
-        self._id = _id
+    public init(id: Int64? = nil, category: Category? = nil, name: String, photoUrls: [String], tags: [Tag]? = nil, status: Status? = nil) {
+        self.id = id
         self.category = category
         self.name = name
         self.photoUrls = photoUrls
@@ -42,7 +37,7 @@ import AnyCodable
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id = "id"
+        case id
         case category
         case name
         case photoUrls
@@ -54,7 +49,7 @@ import AnyCodable
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(_id, forKey: ._id)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(category, forKey: .category)
         try container.encode(name, forKey: .name)
         try container.encode(photoUrls, forKey: .photoUrls)

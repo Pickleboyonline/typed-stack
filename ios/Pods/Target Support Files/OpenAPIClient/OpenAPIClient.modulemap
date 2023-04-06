@@ -1,0 +1,6 @@
+framework module OpenAPIClient {
+  umbrella header "OpenAPIClient-umbrella.h"
+
+  export *
+  module * { export * }
+}

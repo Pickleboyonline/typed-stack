@@ -170,7 +170,7 @@ Place an order for a pet
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import OpenAPIClient
 
-let order = Order(_id: 123, petId: 123, quantity: 123, shipDate: Date(), status: "status_example", complete: false) // Order | order placed for purchasing the pet
+let order = Order(id: 123, petId: 123, quantity: 123, shipDate: Date(), status: "status_example", complete: false) // Order | order placed for purchasing the pet
 
 // Place an order for a pet
 StoreAPI.placeOrder(order: order) { (response, error) in

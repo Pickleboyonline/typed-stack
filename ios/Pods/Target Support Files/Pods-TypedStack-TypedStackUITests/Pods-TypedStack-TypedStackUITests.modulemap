@@ -1,0 +1,6 @@
+framework module Pods_TypedStack_TypedStackUITests {
+  umbrella header "Pods-TypedStack-TypedStackUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

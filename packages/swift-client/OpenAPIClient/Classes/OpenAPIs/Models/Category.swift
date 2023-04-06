@@ -11,24 +11,19 @@ import AnyCodable
 #endif
 
 /** A category for a pet */
-@objc public class Category: NSObject, Codable, JSONEncodable {
+public struct Category: Codable, JSONEncodable, Hashable {
 
     static let nameRule = StringRule(minLength: nil, maxLength: nil, pattern: "/^[a-zA-Z0-9]+[a-zA-Z0-9\\.\\-_]*[a-zA-Z0-9]+$/")
-    public var _id: Int64?
-    public var _idNum: NSNumber? {
-        get {
-            return _id as NSNumber?
-        }
-    }
+    public var id: Int64?
     public var name: String?
 
-    public init(_id: Int64? = nil, name: String? = nil) {
-        self._id = _id
+    public init(id: Int64? = nil, name: String? = nil) {
+        self.id = id
         self.name = name
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case _id = "id"
+        case id
         case name
     }
 
@@ -36,7 +31,7 @@ import AnyCodable
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(_id, forKey: ._id)
+        try container.encodeIfPresent(id, forKey: .id)
         try container.encodeIfPresent(name, forKey: .name)
     }
 }
