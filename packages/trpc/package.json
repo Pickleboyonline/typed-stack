@@ -1,0 +1,27 @@
+{
+  "name": "@typed-stack/trpc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "sst bind vitest",
+    "typecheck": "tsc -noEmit"
+  },
+  "devDependencies": {
+    "@digitak/esrun": "^3.2.24",
+    "@types/aws-lambda": "^8.10.115",
+    "@types/node": "^20.2.5",
+    "@types/pg": "^8.10.1",
+    "sst": "^2.11.1",
+    "vitest": "^0.31.1"
+  },
+  "dependencies": {
+    "@trpc/client": "^10.28.1",
+    "@trpc/server": "^10.28.1",
+    "@typed-stack/database": "*",
+    "kysely": "^0.25.0",
+    "pg": "^8.11.0",
+    "trpc-openapi": "^1.2.0",
+    "zod": "^3.21.4"
+  }
+}

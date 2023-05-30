@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator kysely {
+    provider = "prisma-kysely"
+
+    // Optionally provide a destination directory for the generated file
+    // and a filename of your choice
+    output = "../src"
+    fileName = "db-schema.ts"
+    // Optionally generate runtime enums to a separate file
+     enumFileName = "enums.ts"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id        BigInt   @id @default(sequence())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   // @db.VarChar(255)
+  content   String?
+  published Boolean  @default(false)
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  BigInt
+}
+
+model Profile {
+  id     BigInt  @id @default(sequence())
+  bio    String?
+  user   User    @relation(fields: [userId], references: [id])
+  userId BigInt  @unique
+}
+
+model User {
+  id      BigInt   @id @default(sequence())
+  email   String   @unique
+  name    String?
+  posts   Post[]
+  profile Profile?
+}

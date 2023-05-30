@@ -1,0 +1,27 @@
+{
+  "name": "@typed-stack/open-api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "sst bind vitest",
+    "typecheck": "tsc -noEmit",
+    "build": "zsh ./scripts/build.sh"
+  },
+  "devDependencies": {
+    "@digitak/esrun": "^3.2.24",
+    "@openapitools/openapi-generator-cli": "^2.6.0",
+    "@types/aws-lambda": "^8.10.115",
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^20.2.5",
+    "fs-extra": "^11.1.1",
+    "sst": "^2.11.1",
+    "vitest": "^0.31.1"
+  },
+  "dependencies": {
+    "@trpc/client": "^10.28.1",
+    "@trpc/server": "^10.28.1",
+    "trpc-openapi": "^1.2.0",
+    "zod": "^3.21.4"
+  }
+}
