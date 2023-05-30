@@ -4,7 +4,8 @@
     "module": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@typed-stack/core/*": ["../core/src/*"]
+      "@typed-stack/core/*": ["../core/src/*"],
+      "@database": ["./src/database/"]
     }
   }
 }

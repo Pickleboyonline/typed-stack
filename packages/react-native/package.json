@@ -32,5 +32,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "workspaces": {
+    "nohoist": ["react-native", "react"]
   }
 }

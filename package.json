@@ -19,6 +19,6 @@
     "typescript": "^5.0.4"
   },
   "workspaces": {
-    "packages": ["packages/[!react-native]*"]
+    "packages": ["packages/*"]
   }
 }
