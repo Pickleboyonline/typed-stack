@@ -8,6 +8,7 @@
     "typecheck": "tsc -noEmit"
   },
   "devDependencies": {
+    "@digitak/esrun": "^3.2.24",
     "@types/aws-lambda": "^8.10.115",
     "@types/node": "^20.2.5",
     "sst": "^2.11.1",
