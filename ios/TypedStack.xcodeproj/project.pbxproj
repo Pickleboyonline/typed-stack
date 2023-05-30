@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58D31A7829DED91000562A4D /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 58D31A7729DED91000562A4D /* AWSCognitoAuthPlugin */; };
+		58D31A7A29DED91000562A4D /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 58D31A7929DED91000562A4D /* AWSS3StoragePlugin */; };
+		58D31A7C29DED91000562A4D /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 58D31A7B29DED91000562A4D /* Amplify */; };
 		58F520F129DEAEAD00B4B93D /* TypedStackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F520F029DEAEAD00B4B93D /* TypedStackApp.swift */; };
 		58F520F329DEAEAD00B4B93D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F520F229DEAEAD00B4B93D /* ContentView.swift */; };
 		58F520F529DEAEAE00B4B93D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F520F429DEAEAE00B4B93D /* Assets.xcassets */; };
@@ -65,6 +68,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECDCF49D4F94CA1E79560F8B /* Pods_TypedStack.framework in Frameworks */,
+				58D31A7C29DED91000562A4D /* Amplify in Frameworks */,
+				58D31A7829DED91000562A4D /* AWSCognitoAuthPlugin in Frameworks */,
+				58D31A7A29DED91000562A4D /* AWSS3StoragePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +103,6 @@
 				B4498E889507F3559333B148 /* Pods-TypedStackTests.debug.xcconfig */,
 				E1FABD4DB18BA8EFE68035E1 /* Pods-TypedStackTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -188,6 +193,11 @@
 			dependencies = (
 			);
 			name = TypedStack;
+			packageProductDependencies = (
+				58D31A7729DED91000562A4D /* AWSCognitoAuthPlugin */,
+				58D31A7929DED91000562A4D /* AWSS3StoragePlugin */,
+				58D31A7B29DED91000562A4D /* Amplify */,
+			);
 			productName = TypedStack;
 			productReference = 58F520ED29DEAEAD00B4B93D /* TypedStack.app */;
 			productType = "com.apple.product-type.application";
@@ -264,6 +274,9 @@
 				Base,
 			);
 			mainGroup = 58F520E429DEAEAD00B4B93D;
+			packageReferences = (
+				58D31A7629DED91000562A4D /* XCRemoteSwiftPackageReference "amplify-swift" */,
+			);
 			productRefGroup = 58F520EE29DEAEAD00B4B93D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -740,6 +753,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		58D31A7629DED91000562A4D /* XCRemoteSwiftPackageReference "amplify-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aws-amplify/amplify-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		58D31A7729DED91000562A4D /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58D31A7629DED91000562A4D /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		58D31A7929DED91000562A4D /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58D31A7629DED91000562A4D /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSS3StoragePlugin;
+		};
+		58D31A7B29DED91000562A4D /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58D31A7629DED91000562A4D /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = Amplify;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58F520E529DEAEAD00B4B93D /* Project object */;
 }
