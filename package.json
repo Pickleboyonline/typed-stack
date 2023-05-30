@@ -18,7 +18,7 @@
     "sst": "^2.11.1",
     "typescript": "^5.0.4"
   },
-  "workspaces": [
-    "packages/*"
-  ]
+  "workspaces": {
+    "packages": ["packages/[!react-native]*"]
+  }
 }
