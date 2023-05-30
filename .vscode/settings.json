@@ -1,7 +1,5 @@
 {
-  "editor.formatOnSave": true,
-  "files.exclude": {
-    "**/*.g.dart": true,
-    "**/*.graphql.dart": true
+  "search.exclude": {
+    "**/.sst": true
   }
 }

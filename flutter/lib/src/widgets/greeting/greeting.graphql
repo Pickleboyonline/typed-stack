@@ -1,5 +1,0 @@
-query GreetMe($name: String!) {
-    greetMe(name: $name) {
-        message
-    }
-}
