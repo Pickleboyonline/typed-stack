@@ -1,13 +1,15 @@
 {
-  "name": "@typed-stack/trpc",
+  "name": "@typed-stack/open-api",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "sst bind vitest",
-    "typecheck": "tsc -noEmit"
+    "typecheck": "tsc -noEmit",
+    "build": "esrun src/generateOpenApiSchema.ts"
   },
   "devDependencies": {
+    "@digitak/esrun": "^3.2.24",
     "@types/aws-lambda": "^8.10.115",
     "@types/node": "^20.2.5",
     "sst": "^2.11.1",
