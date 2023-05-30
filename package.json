@@ -15,8 +15,6 @@
     "@tsconfig/node16": "^1.0.4",
     "aws-cdk-lib": "2.79.1",
     "constructs": "10.1.156",
-    "prisma": "^4.14.1",
-    "prisma-kysely": "^1.4.1",
     "sst": "^2.11.1",
     "typescript": "^5.0.4"
   },

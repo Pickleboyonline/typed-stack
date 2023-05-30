@@ -1,0 +1,21 @@
+{
+  "name": "@typed-stack/trpc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "sst bind vitest",
+    "typecheck": "tsc -noEmit"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.115",
+    "@types/node": "^20.2.5",
+    "sst": "^2.11.1",
+    "vitest": "^0.31.1"
+  },
+  "dependencies": {
+    "@trpc/client": "^10.28.1",
+    "@trpc/server": "^10.28.1",
+    "zod": "^3.21.4"
+  }
+}
